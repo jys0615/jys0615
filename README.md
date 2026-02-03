@@ -3,7 +3,7 @@
     </div>
     <div style="text-align: left;"> 
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 자기소개 </h2>  
-    <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;"> 백엔드와 AI를 이어 주는 개발자, 정윤서입니다.  </div> 
+    <div style="font-weight: 700; font-size: 15px; text-align: left; color: #282d33;"> 백엔드와 AI를 이어 주는 개발자, 정윤서입니다. 🏃🏻 </div> 
     </div>
     <div style="text-align: left;">
     <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🛠️ Tech Stacks </h2> <br> 
