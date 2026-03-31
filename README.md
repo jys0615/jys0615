@@ -4,10 +4,10 @@
 
 <div align="center">
   <h1>안녕하세요, 정윤서입니다 👋</h1>
-  <h3>💻 백엔드와 AI를 이어 주는 개발자 🤖</h3>
+  <h3>💻 이기종 서버를 연결하고, 병목을 데이터로 찾아 구조적으로 해결하는 백엔드 개발자 🔧</h3>
   <p>
-    FastAPI × Spring Boot × LangChain으로 AI 서비스를 백엔드와 연결합니다.<br/>
-    성능 병목을 프로파일링으로 찾아 구조적으로 해결하는 것을 즐깁니다.
+    Spring Boot × FastAPI로 이기종 서버를 연결하고,<br/>
+    성능 병목을 프로파일링으로 찾아 구조적으로 해결합니다.
   </p>
 </div>
 
@@ -65,13 +65,13 @@
 
 <br/>
 
-**Frontend(Vibe Coding)**
+---
 
-<div align="center">
-  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"/>
-  <img src="https://img.shields.io/badge/React Native-61DAFB?style=for-the-badge&logo=React&logoColor=black"/>
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white"/>
-</div>
+## 📄 Publications
+
+| 연도 | 논문 | 학회 |
+|------|------|------|
+| 2025 | Open Patient-Ψ: 오픈소스 LLM 기반 환자 시뮬레이션 시스템 | KCC2025 (제1저자) |
 
 <br/>
 
@@ -90,25 +90,27 @@
 
 ## 🚀 Projects
 
-### 🎓 EPiC — 학번별 졸업요건 자동 진단 시스템
-> 경희대 졸업요건을 LLM이 자동 분석·진단하는 AI 서비스 | **2025.03 ~ 2025.04**
+### 🤖 Agent KHU — AI 기반 캠퍼스 정보 통합 플랫폼
+> MCP 아키텍처로 독립 서버를 통합한 AI 에이전트 | **2025.09 ~ 2025.12** | 졸업프로젝트 A+
 
-- FastAPI LLM 서버 + Spring Boot 관리 서버 이원화 아키텍처 설계
-- LangChain 기반 벡터 Q&A + 규칙 검증 파이프라인 구축
-- 비동기 처리·Redis 캐싱·요청 큐 적용으로 **응답속도 약 30% 개선**
+- 7개 독립 MCP 서버 설계 (교실·공지·도서관·학사일정·셔틀버스 등)
+- cProfile로 I/O 병목 진단 → asyncio.gather 병렬처리 + Redis 멀티레이어 캐싱 도입
+- 응답시간 **16.6초 → 5.5초 (67% 단축)**, 에러율 **15% → 2%**, 캐시 히트율 **95%** 달성
+- Graceful Degradation 설계 — 외부 서비스 장애 시에도 서비스 중단 없음
 
-`FastAPI` `LangChain` `Spring Boot` `PostgreSQL` `Docker`
+`FastAPI` `LangChain` `MCP` `PostgreSQL` `Redis` `Docker`
 
 ---
 
-### 🤖 Agent KHU — AI 기반 캠퍼스 정보 통합 플랫폼
-> MCP 아키텍처로 8개 독립 서버를 통합한 AI 에이전트 | **2025.09 ~ 진행 중**
+### 🎓 EPiC — 학번별 졸업요건 자동 진단 시스템
+> 경희대 졸업요건을 LLM이 자동 분석·진단하는 AI 서비스 | **2025.03 ~ 2025.04** | 세모톤 최우수상
 
-- 7개 독립 MCP 서버 설계 (교실·공지·도서관·학사일정·셔틀버스 등)
-- 실시간 크롤링 → 백그라운드 스케줄링 전환으로 **30초 이상 → 실시간 응답** 달성
-- Redis 콘텐츠 해시 비교 기반 변경 감지 시스템, **캐시 히트율 95%** 달성
+- FastAPI LLM 서버 + Spring Boot 관리 서버 이원화 아키텍처 설계
+- JSON 명세 불일치 트러블슈팅 → API 전면 표준화로 이기종 서버 통신 안정화
+- WebClient 비동기 처리 + Redis 캐싱 도입으로 **응답속도 30% 개선**
+- Spring Security + JWT 기반 보안 아키텍처 구현
 
-`FastAPI` `LangChain` `MCP` `PostgreSQL` `Redis`
+`FastAPI` `LangChain` `Spring Boot` `Redis` `PostgreSQL` `Docker`
 
 ---
 
@@ -116,40 +118,42 @@
 > 4개 서버를 하나의 트랜잭션처럼 연결하는 오케스트레이션 구조 | **2025.07 ~ 2025.08**
 
 - Next.js → Spring Boot → FastAPI → Node.js 4단계 API 오케스트레이션 설계
-- Request chaining → Event 기반 구조 전환으로 서버 간 데이터 정합성 해결
+- 상태 플래그 기반 이벤트 구조 도입 → 서버 간 **DB 정합성 100%** 확보
+- Request Chaining 최적화로 불필요한 중간 호출 제거
 
 `Next.js` `Spring Boot` `FastAPI` `Node.js` `PostgreSQL`
 
 ---
 
 ### 🎤 InterV — LLM 기반 면접 생성 서비스
-> AWS 인프라 기반 실서비스 품질의 면접 Q&A 생성 시스템 | **2025.03 ~ 2025.06**
+> AWS 인프라 기반 실서비스 품질의 면접 Q&A 생성 시스템 | **2025.03 ~ 2025.06** | 클라우드컴퓨팅 A+
 
 - LangChain 프롬프트 템플릿 + BERTScore 기반 피드백 평가 파이프라인 구현
-- 모델 캐싱·비동기 I/O·JSON 프로토콜 최적화로 **평가 품질 20% 향상**
+- cProfile로 모델 로딩 병목 진단 → 모델 캐싱 + 비동기 I/O + JSON 직렬화 최적화
+- AWS EC2/RDS/S3/CloudFront 기반 배포 및 운영
 
 `Spring Boot` `FastAPI` `LangChain` `AWS EC2/RDS/S3` `CloudFront`
 
 ---
 
-### 🧠 Open Patient-Ψ — 오픈소스 정신건강 상담 시뮬레이션
-> GPT-4 기반 환자 시뮬레이션 구조를 경량 오픈소스 모델로 재현 | **2025.03 ~ 2025.07**
+### 👴 SeniorSK — 어르신 대상 키오스크 실전 학습 웹
+> 사회복무 중 관찰한 문제를 직접 해결한 프로젝트 | **2023.01 ~ 2023.12** | 사랑나눔 공모전 우수상
 
-- CBT 기반 상담 데이터셋 1,300개 구축 (ChatML 포맷 정규화)
-- QLoRA로 Qwen2.5 0.5B/3B 파인튜닝 — 총 **25개 하이퍼파라미터 조합** 자동 실험
-- GPT-4.1-mini 기반 자동 평가 파이프라인으로 **GPT-4.1-nano 수준 품질 달성**
+- 튜토리얼 모드 + 실전 연습 모드 분리 설계
+- 실사용자 시연 반복 → 피드백 기반 UI/UX 개선, 실수 복구 기능(되돌리기/재시작) 구현
 
-`QLoRA` `Qwen2.5` `HuggingFace` `BERTScore` `FastAPI`
+`HTML/CSS/JS`
 
 ---
 
-### 👴 SeniorSK — 어르신 대상 키오스크 실전 학습 웹
-> 사회복무 중 관찰한 문제를 직접 해결한 프로젝트 | **2023.01 ~ 2023.12**
+### 🧠 Open Patient-Ψ — 오픈소스 정신건강 상담 시뮬레이션
+> GPT-4 기반 환자 시뮬레이션 구조를 경량 오픈소스 모델로 재현 | **2025.03 ~ 2025.07** | KCC2025 제1저자
 
-- 튜토리얼 모드 + 실전 연습 모드 분리 설계
-- 사용자 피드백 기반 UI/UX 전면 개선, 실수 복구 기능(되돌리기/재시작) 직접 구현
+- CBT 기반 상담 데이터셋 1,300개 직접 구축 (ChatML 포맷 정규화)
+- QLoRA로 Qwen2.5 0.5B/3B 파인튜닝 — 총 **25개 하이퍼파라미터 조합** 자동 실험
+- BERTScore 기반 자동 평가 파이프라인 → **GPT-4.1-nano 수준 품질 달성**
 
-`HTML/CSS/JS` `GitHub Actions`
+`QLoRA` `Qwen2.5` `HuggingFace` `BERTScore` `FastAPI`
 
 <br/>
 
