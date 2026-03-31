@@ -159,20 +159,6 @@
 
 ---
 
-## 📊 Stats
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=jys0615&show_icons=true&theme=calm&hide_border=true&bg_color=f5f0ff&title_color=7c4dff&icon_color=b897ff&text_color=333333&cache_seconds=86400" height="160"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=jys0615&layout=compact&hide_border=true&bg_color=f5f0ff&title_color=7c4dff&text_color=333333&cache_seconds=86400" height="160"/>
-</div>
-
-<div align="center">
-  <img src="https://streak-stats.demolab.com?user=jys0615&theme=calm&hide_border=true&background=f5f0ff&ring=b897ff&fire=7c4dff&currStreakLabel=7c4dff" height="160"/>
-</div>
-
-<br/>
-
----
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=wave&color=#b897ff&height=80&section=footer" />
