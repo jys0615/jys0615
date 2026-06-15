@@ -88,9 +88,9 @@
 - Elasticsearch BM25 RAG + QuestionClassifier 기반 하이브리드 라우팅 — 전체 질의의 **62%를 LLM 없이 처리**, Simple 질의 응답 100~200ms 달성
 - asyncio.gather 병렬 초기화 + Tool별 차등 TTL Redis 캐싱으로 응답시간 **16.6초 → 5.5초 (67% 단축)**, 캐시 히트율 **95%** 달성
 - _reconnect_lock 기반 Graceful Degradation 설계 — 세션 장애 시에도 서비스 중단 없음
-- Elasticsearch Observability 파이프라인 (12개 필드 색인) + Prometheus/Grafana 커스텀 메트릭 4개 구축
+- Elasticsearch Observability 파이프라인 (12개 필드 색인)
 
-`FastAPI` `MCP` `LangChain` `Elasticsearch` `PostgreSQL` `Redis` `Prometheus` `Grafana` `Docker`
+`FastAPI` `MCP` `LangChain` `Elasticsearch` `PostgreSQL` `Redis` `Docker`
 
 ---
 
