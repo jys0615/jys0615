@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=wave&color=#b897ff&height=120&text=&animation=&fontColor=000000&fontSize=70" />
+  <img src="https://capsule-render.vercel.app/api?type=wave&color=#1B2A4A&height=120&text=&animation=&fontColor=000000&fontSize=70" />
 </div>
 
 <div align="center">
@@ -21,7 +21,7 @@
     <img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white"/>
   </a>
   <a href="https://yoonsuh.com">
-    <img src="https://img.shields.io/badge/Portfolio-b897ff?style=for-the-badge&logo=Safari&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Portfolio-1B2A4A?style=for-the-badge&logo=Safari&logoColor=white"/>
   </a>
 </div>
 
@@ -88,9 +88,9 @@
 - Elasticsearch BM25 RAG + QuestionClassifier 기반 하이브리드 라우팅 — 전체 질의의 **62%를 LLM 없이 처리**, Simple 질의 응답 100~200ms 달성
 - asyncio.gather 병렬 초기화 + Tool별 차등 TTL Redis 캐싱으로 응답시간 **16.6초 → 5.5초 (67% 단축)**, 캐시 히트율 **95%** 달성
 - _reconnect_lock 기반 Graceful Degradation 설계 — 세션 장애 시에도 서비스 중단 없음
-- Elasticsearch Observability 파이프라인 (12개 필드 색인)
+- Elasticsearch Observability 파이프라인 (12개 필드 색인) + Prometheus/Grafana 커스텀 메트릭 4개 구축
 
-`FastAPI` `MCP` `LangChain` `Elasticsearch` `PostgreSQL` `Redis` `Docker`
+`FastAPI` `MCP` `LangChain` `Elasticsearch` `PostgreSQL` `Redis` `Prometheus` `Grafana` `Docker`
 
 ---
 
@@ -155,5 +155,5 @@
 
 
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=wave&color=#b897ff&height=80&section=footer" />
+  <img src="https://capsule-render.vercel.app/api?type=wave&color=#1B2A4A&height=80&section=footer" />
 </div>
