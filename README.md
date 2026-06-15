@@ -59,6 +59,7 @@
 <div align="center">
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=PostgreSQL&logoColor=white"/>
   <img src="https://img.shields.io/badge/Redis-FF4438?style=for-the-badge&logo=Redis&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Elasticsearch-005571?style=for-the-badge&logo=Elasticsearch&logoColor=white"/>
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"/>
   <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=AmazonAWS&logoColor=white"/>
 </div>
@@ -83,35 +84,37 @@
 ### 🤖 Agent KHU — AI 기반 캠퍼스 정보 통합 플랫폼
 > MCP 아키텍처로 독립 서버를 통합한 AI 에이전트 | **2025.09 ~ 2025.12** | 졸업프로젝트 A+
 
-- 7개 독립 MCP 서버 설계 (교실·공지·도서관·학사일정·셔틀버스 등)
-- cProfile로 I/O 병목 진단 → asyncio.gather 병렬처리 + Redis 멀티레이어 캐싱 도입
-- 응답시간 **16.6초 → 5.5초 (67% 단축)**, 에러율 **15% → 2%**, 캐시 히트율 **95%** 달성
-- Graceful Degradation 설계 — 외부 서비스 장애 시에도 서비스 중단 없음
+- 6개 MCP 마이크로서비스 설계 (교실·공지·도서관·학사일정·셔틀버스 등) + FastAPI 백엔드 통합
+- Elasticsearch BM25 RAG + QuestionClassifier 기반 하이브리드 라우팅 — 전체 질의의 **62%를 LLM 없이 처리**, Simple 질의 응답 100~200ms 달성
+- asyncio.gather 병렬 초기화 + Tool별 차등 TTL Redis 캐싱으로 응답시간 **16.6초 → 5.5초 (67% 단축)**, 캐시 히트율 **95%** 달성
+- _reconnect_lock 기반 Graceful Degradation 설계 — 세션 장애 시에도 서비스 중단 없음
+- Elasticsearch Observability 파이프라인 (12개 필드 색인) + Prometheus/Grafana 커스텀 메트릭 4개 구축
 
-`FastAPI` `LangChain` `MCP` `PostgreSQL` `Redis` `Docker`
+`FastAPI` `MCP` `LangChain` `Elasticsearch` `PostgreSQL` `Redis` `Prometheus` `Grafana` `Docker`
 
 ---
 
 ### 🎓 EPiC — 학번별 졸업요건 자동 진단 시스템
-> 경희대 졸업요건을 LLM이 자동 분석·진단하는 AI 서비스 | **2025.03 ~ 2025.04** | 세모톤 최우수상
+> 경희대 졸업요건을 LLM이 자동 분석·진단하는 AI 서비스 | **2025.03 ~ 2025.04 (원개발) / 2026.04 (리팩토링)** | 세모톤 최우수상
 
-- FastAPI LLM 서버 + Spring Boot 관리 서버 이원화 아키텍처 설계
-- JSON 명세 불일치 트러블슈팅 → API 전면 표준화로 이기종 서버 통신 안정화
-- WebClient 비동기 처리 + Redis 캐싱 도입으로 **응답속도 30% 개선**
-- Spring Security + JWT 기반 보안 아키텍처 구현
+- FastAPI(AI 서버) + Spring Boot(BE 서버) 이기종 통합 설계 — BodyInserters.fromMultipartData()로 멀티파트 PDF 파일 파이프라인 구현
+- RestTemplate → WebClient 전환 (Thread-per-request → Netty 이벤트 루프), 코드량 **50% 감소**
+- Redis 3단계 차등 TTL 캐싱 + session-id 헤더 기반 세션 격리로 커리큘럼 추천 응답 **5.8초 → 0.07초 (99% 단축)**
+- Nginx Gzip 압축으로 API 응답 크기 **40% 감소**
+- GitHub Actions CI/CD + Docker Compose + Azure 자동 배포
 
-`FastAPI` `LangChain` `Spring Boot` `Redis` `PostgreSQL` `Docker`
+`FastAPI` `Spring Boot` `Java 21` `Redis` `MongoDB` `OpenCV` `Nginx` `Docker` `Azure`
 
 ---
 
 ### 🏛️ 민들레 — 동대문구 민원 자동화 플랫폼
 > 4개 서버를 하나의 트랜잭션처럼 연결하는 오케스트레이션 구조 | **2025.07 ~ 2025.08**
 
-- Next.js → Spring Boot → FastAPI → Node.js 4단계 API 오케스트레이션 설계
-- 상태 플래그 기반 이벤트 구조 도입 → 서버 간 **DB 정합성 100%** 확보
-- Request Chaining 최적화로 불필요한 중간 호출 제거
+- Spring Boot를 단일 진입점·오케스트레이터로 설계 — 채널 분류 → AI 초안 생성 → 민원 자동 입력까지 7단계 파이프라인 순차 처리
+- 단계별 즉시 DB 커밋 구조 (DB 상태 플래그 기반 이벤트) → 이기종 서버 간 **DB 정합성 100%** 확보, 재시도 시 중복 처리 방지
+- HTTP → SSE 스트리밍 전환으로 GPT 초안 생성 결과를 청크 단위 실시간 전달, 타임아웃 해소
 
-`Next.js` `Spring Boot` `FastAPI` `Node.js` `PostgreSQL`
+`Spring Boot` `FastAPI` `Node.js` `Next.js` `PostgreSQL`
 
 ---
 
@@ -137,13 +140,14 @@
 ---
 
 ### 🧠 Open Patient-Ψ — 오픈소스 정신건강 상담 시뮬레이션
-> GPT-4 기반 환자 시뮬레이션 구조를 경량 오픈소스 모델로 재현 | **2025.03 ~ 2025.07** | KCC2025 제1저자
+> GPT-4 기반 환자 시뮬레이션 구조를 경량 오픈소스 모델로 재현 | **2025.04 ~ 2025.09** | KCC2025 제1저자
 
-- CBT 기반 상담 데이터셋 1,300개 직접 구축 (ChatML 포맷 정규화)
-- QLoRA로 Qwen2.5 0.5B/3B 파인튜닝 — 총 **25개 하이퍼파라미터 조합** 자동 실험
-- BERTScore 기반 자동 평가 파이프라인 → **GPT-4.1-nano 수준 품질 달성**
+- CBT 기반 상담 데이터셋 **1,300개** 직접 설계·구축 (7개 상황 범주 × 3개 핵심 신념 × 6개 발화 스타일)
+- QLoRA 4-bit 양자화로 Qwen2.5 0.5B/3B 파인튜닝 — 단일 GPU에서 3B 모델 학습, 메모리 사용량 **75% 절감**
+- epoch × learning rate **25개 조합 자동 탐색** (grid search), BERTScore F1 기준 최적 구성 선정
+- BERTScore 1단계 + GPT-4.1-mini pointwise 2단계 이중 자동 평가 파이프라인 → **GPT-4.1-nano 대비 우위 달성**
 
-`QLoRA` `Qwen2.5` `HuggingFace` `BERTScore` `FastAPI`
+`QLoRA` `Qwen2.5` `HuggingFace` `PyTorch` `BERTScore`
 
 <br/>
 
