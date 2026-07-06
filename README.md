@@ -4,10 +4,10 @@
 
 <div align="center">
   <h1>안녕하세요~ 정윤서입니다 👋</h1>
-  <h3>💻 이기종 서버를 연결하고, 병목을 데이터로 찾아 구조적으로 해결하는 백엔드 개발자 🤖</h3>
+  <h3>💻 동작하는 것과 운영되는 것은 다르다 — 이기종 서버를 잇고, 신뢰성을 데이터로 증명하는 개발자 🤖</h3>
   <p>
     Spring Boot × FastAPI로 이기종 서버를 연결하고,<br/>
-    성능 병목을 프로파일링으로 찾아 구조적으로 해결합니다.
+    성능 병목을 프로파일링으로, 품질을 평가 파이프라인으로 증명합니다.
   </p>
 </div>
 
@@ -24,6 +24,15 @@
     <img src="https://img.shields.io/badge/Portfolio-1B2A4A?style=for-the-badge&logo=Safari&logoColor=white"/>
   </a>
 </div>
+
+<br/>
+
+---
+
+## 🏢 Currently
+
+- **AI Verification & Development Engineer** @ SureSoftTech (2026.07~)
+- AI 에이전트/LLM 검증 및 신뢰성 엔지니어링 도메인 학습 및 실무 수행 중
 
 <br/>
 
@@ -50,6 +59,17 @@
   <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=LangChain&logoColor=white"/>
   <img src="https://img.shields.io/badge/HuggingFace-FFD21E?style=for-the-badge&logo=HuggingFace&logoColor=black"/>
   <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=OpenAI&logoColor=white"/>
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=PyTorch&logoColor=white"/>
+</div>
+
+<br/>
+
+**Testing & Evaluation**
+
+<div align="center">
+  <img src="https://img.shields.io/badge/BERTScore-4B8BBE?style=for-the-badge&logo=Python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=Grafana&logoColor=white"/>
 </div>
 
 <br/>
@@ -94,6 +114,18 @@
 
 ---
 
+### 🧠 Open Patient-Ψ — 오픈소스 정신건강 상담 시뮬레이션
+> GPT-4 기반 환자 시뮬레이션 구조를 경량 오픈소스 모델로 재현 | **2025.04 ~ 2025.09** | KCC2025 제1저자
+
+- CBT 기반 상담 데이터셋 **1,300개** 직접 설계·구축 (7개 상황 범주 × 3개 핵심 신념 × 6개 발화 스타일)
+- QLoRA 4-bit 양자화로 Qwen2.5 0.5B/3B 파인튜닝 — 단일 GPU에서 3B 모델 학습, 메모리 사용량 **75% 절감**
+- epoch × learning rate **25개 조합 자동 탐색** (grid search), BERTScore F1 기준 최적 구성 선정
+- 단일 지표로는 놓칠 수 있는 응답 품질을 다각도로 검증하기 위해 **BERTScore(정량) + GPT-4.1-mini pointwise(정성) 이중 자동 평가 파이프라인** 설계 → GPT-4.1-nano 대비 우위 달성
+
+`QLoRA` `Qwen2.5` `HuggingFace` `PyTorch` `BERTScore`
+
+---
+
 ### 🎓 EPiC — 학번별 졸업요건 자동 진단 시스템
 > 경희대 졸업요건을 LLM이 자동 분석·진단하는 AI 서비스 | **2025.03 ~ 2025.04 (원개발) / 2026.04 (리팩토링)** | 세모톤 최우수상
 
@@ -129,30 +161,19 @@
 
 ---
 
-### 👴 SeniorSK — 어르신 대상 키오스크 실전 학습 웹
-> 사회복무 중 관찰한 문제를 직접 해결한 프로젝트 | **2023.01 ~ 2023.12** | 사랑나눔 공모전 우수상
+<details>
+<summary>👴 <b>SeniorSK</b> — 어르신 대상 키오스크 실전 학습 웹 (2023, 사회복무 중 단독 개발)</summary>
+<br/>
 
-- 튜토리얼 모드 + 실전 연습 모드 분리 설계
-- 실사용자 시연 반복 → 피드백 기반 UI/UX 개선, 실수 복구 기능(되돌리기/재시작) 구현
+튜토리얼 모드 + 실전 연습 모드 분리 설계, 실사용자 시연 반복을 통한 UI/UX 개선, 실수 복구 기능(되돌리기/재시작) 구현. 사랑나눔 공모전 우수상.
 
 `HTML/CSS/JS`
 
----
-
-### 🧠 Open Patient-Ψ — 오픈소스 정신건강 상담 시뮬레이션
-> GPT-4 기반 환자 시뮬레이션 구조를 경량 오픈소스 모델로 재현 | **2025.04 ~ 2025.09** | KCC2025 제1저자
-
-- CBT 기반 상담 데이터셋 **1,300개** 직접 설계·구축 (7개 상황 범주 × 3개 핵심 신념 × 6개 발화 스타일)
-- QLoRA 4-bit 양자화로 Qwen2.5 0.5B/3B 파인튜닝 — 단일 GPU에서 3B 모델 학습, 메모리 사용량 **75% 절감**
-- epoch × learning rate **25개 조합 자동 탐색** (grid search), BERTScore F1 기준 최적 구성 선정
-- BERTScore 1단계 + GPT-4.1-mini pointwise 2단계 이중 자동 평가 파이프라인 → **GPT-4.1-nano 대비 우위 달성**
-
-`QLoRA` `Qwen2.5` `HuggingFace` `PyTorch` `BERTScore`
+</details>
 
 <br/>
 
 ---
-
 
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=wave&color=1B2A4A&height=80&section=footer" />
