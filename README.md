@@ -101,36 +101,43 @@
 ## 🚀 Projects
 
 ### 🤖 Agent KHU — AI 기반 캠퍼스 정보 통합 플랫폼
-> MCP 아키텍처로 독립 서버를 통합한 AI 에이전트 | **2025.09 ~ 2025.12** | 졸업프로젝트 A+
+> MCP 아키텍처로 독립 서버를 통합한 AI 에이전트 | **2025.09 ~ 2025.12** | 졸업프로젝트 A+ | 단독 개발
+
+🔗 [GitHub Repository](https://github.com/jys0615/agent-khu)
 
 - 6개 MCP 마이크로서비스 설계 (교실·공지·도서관·학사일정·셔틀버스 등) + FastAPI 백엔드 통합
-- Elasticsearch BM25 RAG + QuestionClassifier 기반 하이브리드 라우팅 — 전체 질의의 **62%를 LLM 없이 처리**, Simple 질의 응답 100~200ms 달성
+- Elasticsearch BM25 RAG + QuestionClassifier 기반 LLM/SLM 하이브리드 라우팅 — 전체 질의의 **62%를 LLM 없이 처리**, Simple 질의 응답 100~200ms 달성
 - asyncio.gather 병렬 초기화 + Tool별 차등 TTL Redis 캐싱으로 응답시간 **16.6초 → 5.5초 (67% 단축)**, 캐시 히트율 **95%** 달성
+- MCP 서버 간 Context 충돌 → 공유 세션 구조 파악 → 독립 세션 재설계로 **에러율 15% → 2%** 개선
 - _reconnect_lock 기반 Graceful Degradation 설계 — 세션 장애 시에도 서비스 중단 없음
-- Elasticsearch Observability 파이프라인 (12개 필드 색인) + Prometheus/Grafana 커스텀 메트릭 4개 구축
+- Elasticsearch Observability 파이프라인 (ObservabilityLogger, 12개 필드 색인) + Prometheus/Grafana 커스텀 메트릭 4개 구축
 
 `FastAPI` `MCP` `LangChain` `Elasticsearch` `PostgreSQL` `Redis` `Prometheus` `Grafana` `Docker`
 
 ---
 
 ### 🧠 Open Patient-Ψ — 오픈소스 정신건강 상담 시뮬레이션
-> GPT-4 기반 환자 시뮬레이션 구조를 경량 오픈소스 모델로 재현 | **2025.04 ~ 2025.09** | KCC2025 제1저자
+> GPT-4 기반 환자 시뮬레이션 구조를 경량 오픈소스 모델로 재현 | **2025.04 ~ 2025.09** | LDI LAB 학부연구생 | KCC2025 제1저자
+
+🔗 [GitHub Repository](https://github.com/jys0615/Open-Patient-Psi)
 
 - CBT 기반 상담 데이터셋 **1,300개** 직접 설계·구축 (7개 상황 범주 × 3개 핵심 신념 × 6개 발화 스타일)
 - QLoRA 4-bit 양자화로 Qwen2.5 0.5B/3B 파인튜닝 — 단일 GPU에서 3B 모델 학습, 메모리 사용량 **75% 절감**
 - epoch × learning rate **25개 조합 자동 탐색** (grid search), BERTScore F1 기준 최적 구성 선정
-- 단일 지표로는 놓칠 수 있는 응답 품질을 다각도로 검증하기 위해 **BERTScore(정량) + GPT-4.1-mini pointwise(정성) 이중 자동 평가 파이프라인** 설계 → GPT-4.1-nano 대비 우위 달성
+- 단일 지표로는 놓칠 수 있는 응답 품질을 다각도로 검증하기 위해 **BERTScore(정량) + GPT-4.1-mini pointwise(정성) 이중 자동 평가 파이프라인** 설계 → GPT-4.1-nano 대비 근소 우위 달성
 
 `QLoRA` `Qwen2.5` `HuggingFace` `PyTorch` `BERTScore`
 
 ---
 
 ### 🎓 EPiC — 학번별 졸업요건 자동 진단 시스템
-> 경희대 졸업요건을 LLM이 자동 분석·진단하는 AI 서비스 | **2025.03 ~ 2025.04 (원개발) / 2026.04 (리팩토링)** | 세모톤 최우수상
+> 경희대 졸업요건을 LLM이 자동 분석·진단하는 AI 서비스 | **2025.04** (원개발) **/ 2026.04** (리팩토링) | 경희대 제1회 세모톤, 팀장·6인 | 최우수상
+
+🔗 [GitHub Repository](https://github.com/jys0615/EPiC)
 
 - FastAPI(AI 서버) + Spring Boot(BE 서버) 이기종 통합 설계 — BodyInserters.fromMultipartData()로 멀티파트 PDF 파일 파이프라인 구현
-- RestTemplate → WebClient 전환 (Thread-per-request → Netty 이벤트 루프), 코드량 **50% 감소**
-- Redis 3단계 차등 TTL 캐싱 + session-id 헤더 기반 세션 격리로 커리큘럼 추천 응답 **5.8초 → 0.07초 (99% 단축)**
+- Spring Security + JWT 기반 인증, RestTemplate → WebClient 전환(Thread-per-request → Netty 이벤트 루프)으로 코드량 **50% 감소**
+- Redis 3단계 차등 TTL 캐싱 + session-id 헤더 기반 사용자별 세션 분리(TTL 30분)로 커리큘럼 추천 응답 **5.8초 → 0.07초 (99% 단축)**
 - Nginx Gzip 압축으로 API 응답 크기 **40% 감소**
 - GitHub Actions CI/CD + Docker Compose + Azure 자동 배포
 
@@ -138,19 +145,23 @@
 
 ---
 
-### 🏛️ 민들레 — 동대문구 민원 자동화 플랫폼
-> 4개 서버를 하나의 트랜잭션처럼 연결하는 오케스트레이션 구조 | **2025.07 ~ 2025.08**
+### 🏛️ 민들레 (Dandelion) — 동대문구 민원 자동화 플랫폼
+> 4개 서버를 하나의 트랜잭션처럼 연결하는 오케스트레이션 구조 | **2025.07 ~ 2025.08** | K-HTML 해커톤
+
+🔗 [GitHub Repository](https://github.com/jys0615/Dandelion)
 
 - Spring Boot를 단일 진입점·오케스트레이터로 설계 — 채널 분류 → AI 초안 생성 → 민원 자동 입력까지 7단계 파이프라인 순차 처리
-- 단계별 즉시 DB 커밋 구조 (DB 상태 플래그 기반 이벤트) → 이기종 서버 간 **DB 정합성 100%** 확보, 재시도 시 중복 처리 방지
+- 상태 플래그 기반 단계별 즉시 DB 커밋 구조 → 이기종 서버 간 **DB 정합성 100%** 확보, 재시도 시 중복 처리 방지
 - HTTP → SSE 스트리밍 전환으로 GPT 초안 생성 결과를 청크 단위 실시간 전달, 타임아웃 해소
 
-`Spring Boot` `FastAPI` `Node.js` `Next.js` `PostgreSQL`
+`Spring Boot` `FastAPI` `Node.js` `TypeScript` `PostgreSQL`
 
 ---
 
 ### 🎤 InterV — LLM 기반 면접 생성 서비스
 > AWS 인프라 기반 실서비스 품질의 면접 Q&A 생성 시스템 | **2025.03 ~ 2025.06** | 클라우드컴퓨팅 A+
+
+🔗 [GitHub Repository](https://github.com/jys0615/inter-v)
 
 - LangChain 프롬프트 템플릿 + BERTScore 기반 피드백 평가 파이프라인 구현
 - cProfile로 모델 로딩 병목 진단 → 모델 캐싱 + 비동기 I/O + JSON 직렬화 최적화
@@ -163,6 +174,8 @@
 <details>
 <summary>👴 <b>SeniorSK</b> — 어르신 대상 키오스크 실전 학습 웹 (2023, 사회복무 중 단독 개발)</summary>
 <br/>
+
+🔗 [GitHub Repository](https://github.com/jys0615/SeniorSk)
 
 튜토리얼 모드 + 실전 연습 모드 분리 설계, 실사용자 시연 반복을 통한 UI/UX 개선, 실수 복구 기능(되돌리기/재시작) 구현. 사랑나눔 공모전 우수상.
 
