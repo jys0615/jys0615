@@ -31,7 +31,7 @@
 ## 🏢 Currently
 
 - **AI Verification & Development Engineer** @ SureSoftTech (2026.07~)
-- AI 에이전트/LLM 검증 및 신뢰성 엔지니어링 도메인 학습 및 실무 수행 중
+  - AI 에이전트/LLM 검증 및 신뢰성 엔지니어링 도메인 학습 및 실무 수행 중
 
 <br/>
 
